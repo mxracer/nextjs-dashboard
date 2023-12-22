@@ -4,7 +4,7 @@ import { Suspense } from 'react';
 import Search from "@/app/ui/search";
 import Pagination from "@/app/ui/invoices/pagination";
 import {fetchCustomersPages} from "@/app/lib/data";
-import {CustomersTableSkeleton, InvoicesTableSkeleton} from "@/app/ui/skeletons";
+import {CustomersTableSkeleton} from "@/app/ui/skeletons";
 
 
 export default async function Page({
@@ -30,8 +30,9 @@ export default async function Page({
                 <Search placeholder="Search customers..." />
             </div>
             {  <Suspense key={query + currentPage} fallback={<CustomersTableSkeleton />}>
-                <Table query={query} currentPage={currentPage} />
-            </Suspense> }
+                    <Table query={query} currentPage={currentPage} />
+                </Suspense>
+            }
             <div className="mt-5 flex w-full justify-center">
                 { <Pagination totalPages={totalPages} /> }
             </div>
